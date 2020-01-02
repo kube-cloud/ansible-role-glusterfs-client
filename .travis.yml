@@ -1,0 +1,49 @@
+---
+
+# Initialize the Language
+language: python
+
+# Declare Docker Service to be used in the build
+services: docker
+
+# Environments variables for test
+env:
+
+    # Global
+    global:
+        - ROLE_NAME: initserver
+        - AUTHOR: jetune
+    matrix:
+        - MOLECULE_DISTRO: centos6
+        - MOLECULE_DISTRO: centos7
+        - MOLECULE_DISTRO: ubuntu16
+        - MOLECULE_DISTRO: ubuntu18
+
+# Before install actions
+before_install:
+    - docker pull kubecloudsas/docker-ansible-test:centos6
+    - docker pull kubecloudsas/docker-ansible-test:centos7
+    - docker pull kubecloudsas/docker-ansible-test:ubuntu16
+    - docker pull kubecloudsas/docker-ansible-test:ubuntu18
+
+# Installation actions
+install:
+
+    # Install Test tools
+    - pip install molecule docker flake8
+
+    # Uninstall testinfra 1.19.0
+    - pip uninstall -y testinfra==1.19.0
+
+    # Install testinfra 3.0.5
+    - pip install testinfra==3.0.5
+
+# Test scripts
+script:
+
+    # Run Tests
+    - molecule test --all
+
+# Norifications
+notifications:
+    webhooks: https://galaxy.ansible.com/api/v1/notifications/

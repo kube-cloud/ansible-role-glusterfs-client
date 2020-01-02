@@ -1,0 +1,72 @@
+---
+
+# Check Application code [To deploy on the server]
+- name: ({{ ansible_distribution }}) - INIT - Check Application Code
+  fail:
+   msg: "Vérifier le code application à déployer"
+  when:
+   - (server_app_code is not defined) or (server_app_code|trim|length == 0)
+
+# Check Application user SSH Private Key
+- name: ({{ ansible_distribution }}) - INIT - Check Application user private key
+  fail:
+   msg: "Vérifier le chemin vers la clé privée de l'utilisateur applicatif"
+  when:
+   - (server_user_ssh_private_key is not defined) or (server_user_ssh_private_key|trim|length == 0)
+
+# define Commons facts
+- name: ({{ ansible_distribution }}) - INIT - Define commons facts
+  set_fact:
+   server_password_auth: "{{ server_password_auth | default(true) }}"
+   server_app_description: "{{ server_app_description | default('KubeCloud Application description') }}"
+   _server_app_home: "{{ (server_app_home | default('/kubecloud/appli/')) | regex_replace('\\/$', '') }}"
+   server_app_logs: "logs"
+   server_app_configuration: "configuration"
+   server_app_security: "security"
+   server_app_scripts: "scripts"
+   server_app_delivery: "delivery"
+   server_app_datas: "datas"
+   server_app_tmp: "tmp"
+   server_user_name: "{{ server_user_name | default(server_app_code) }}"
+   server_user_comment: "{{ server_user_comment | default('KubeCloud (' + server_app_code + ') User Owner') }}"
+   server_user_password: "{{ server_user_password | default(server_app_code) }}"
+   server_user_groups: "{{ server_user_groups | default([server_app_code, 'sudo', 'adm']) }}"
+   server_user_create_home: "{{ server_user_create_home | default(true) }}"
+   server_user_shell: "{{ server_user_shell | default('/usr/bin/bash') }}"
+   server_user_autorized_keys: "{{ server_user_autorized_keys | default([]) }}"
+
+# define Commons ubuntu facts
+- name: ({{ ansible_distribution }}) - INIT - Define Ubuntu facts
+  set_fact:
+   server_packages: "{{ (server_packages | default([])) + ['openssl'] }}"
+  when:
+   - ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+
+# define Commons CentOS facts
+- name: ({{ ansible_distribution }}) - INIT - Define CentOS facts
+  set_fact:
+   server_packages: "{{ (server_packages | default([])) + ['openssl'] }}"
+  when:
+   - ansible_distribution == "CentOS" or ansible_distribution == "RedHat"
+
+# define Commons Fedora facts
+- name: ({{ ansible_distribution }}) - INIT - Define fedora facts
+  set_fact:
+   server_packages: "{{ (server_packages | default([])) + ['openssl'] }}"
+  when:
+   - ansible_distribution == "Fedora"
+
+# define Commons Fedora facts
+- name: ({{ ansible_distribution }}) - INIT - Define Server directories
+  set_fact:
+   server_directories:
+    - "/home/{{ server_user_name }}/.ssh"
+    - "{{ _server_app_home }}"
+    - "{{ _server_app_home }}/{{ server_app_code }}"
+    - "{{ _server_app_home }}/{{ server_app_code }}/{{ server_app_logs }}"
+    - "{{ _server_app_home }}/{{ server_app_code }}/{{ server_app_configuration }}"
+    - "{{ _server_app_home }}/{{ server_app_code }}/{{ server_app_security }}"
+    - "{{ _server_app_home }}/{{ server_app_code }}/{{ server_app_scripts }}"
+    - "{{ _server_app_home }}/{{ server_app_code }}/{{ server_app_delivery }}"
+    - "{{ _server_app_home }}/{{ server_app_code }}/{{ server_app_datas }}"
+    - "{{ _server_app_home }}/{{ server_app_code }}/{{ server_app_tmp }}"

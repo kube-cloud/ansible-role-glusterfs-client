@@ -1,0 +1,8 @@
+---
+
+# Ensure Required Packages are installed
+- name: ({{ ansible_distribution }}) - INSTALL - Ensure Required Packages are installed
+  package:
+   name: "{{ item }}"
+   state: present
+  loop: "{{ server_packages }}"

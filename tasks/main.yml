@@ -1,0 +1,19 @@
+---
+# Configure KubeCloud server main tasks on Supported system
+- name: ({{ ansible_distribution }}) - MAIN - KubeCloud server init configuration
+  block:
+
+   # Include Initialize tasks (Linux)
+   - name: ({{ ansible_distribution }}) - MAIN - Include Initialize tasks
+     include_tasks: "initialize.yml"
+
+   # Include Install tasks (Linux)
+   - name: ({{ ansible_distribution }}) - MAIN - Include Install tasks
+     include_tasks: "install.yml"
+
+   # Include Configure tasks (Linux)
+   - name: ({{ ansible_distribution }}) - MAIN - Include Configure tasks
+     include_tasks: "configure.yml"
+
+  when:
+   - ansible_distribution == "RedHat" or ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
