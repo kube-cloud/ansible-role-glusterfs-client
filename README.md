@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/pypi/pyversions/testinfra.svg?style=flat)
 ![Licence](https://img.shields.io/github/license/kube-cloud/ansible-role-initserver.svg?style=flat)
 [![Travis Build](https://img.shields.io/travis/kube-cloud/ansible-role-initserver.svg?style=flat)](https://travis-ci.com/kube-cloud/ansible-role-initserver)
-[![Galaxy Role Downloads](https://img.shields.io/ansible/role/d/41894.svg?style=flat)](https://galaxy.ansible.com/jetune/initserver)
+[![Galaxy Role Downloads](https://img.shields.io/ansible/role/d/45599.svg?style=flat)](https://galaxy.ansible.com/jetune/initserver)
 
 Ansible role for custom KubeCloud Server Initialization 
 
