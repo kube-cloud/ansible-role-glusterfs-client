@@ -6,3 +6,5 @@
    name: "{{ item }}"
    state: present
   loop: "{{ server_packages }}"
+  when:
+   - item != 'firwalld' or (ansible_distribution != 'CentOS' or distribution_major_version|int > 6)
