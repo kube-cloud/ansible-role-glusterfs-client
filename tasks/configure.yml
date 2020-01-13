@@ -73,6 +73,9 @@
     # Owner
     owner: "{{ server_user_name }}"
 
+    # Group Owner
+    group: "{{ server_user_main_group | default(server_user_name) }}"
+
     # recurse mode
     recurse: true
 
@@ -108,6 +111,9 @@
 
     # Owner
     owner: "{{ server_user_name }}"
+
+    # Group Owner
+    group: "{{ server_user_main_group | default(server_user_name) }}"
 
     # Access
     mode: u+rwx,g-rwx,o-rwx

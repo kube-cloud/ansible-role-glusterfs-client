@@ -14,6 +14,7 @@
       server_app_description: "KubeCloud Application description"
       server_app_home: "/kubecloud/myapp/"
       server_user_name: "admin"
+      server_user_main_group: "admin"
       server_user_comment: "KIS Application Administrator"
       server_user_password: "admin123"
       server_user_groups: ["kis", "sudo", "adm", "exploit"]
@@ -21,3 +22,4 @@
       server_user_shell: "/usr/bin/bash"
       server_user_ssh_private_key: "security/admin_rsa"
       server_user_autorized_keys: ["security/admin_rsa.pub"]
+      server_packages: ["firewalld"]
