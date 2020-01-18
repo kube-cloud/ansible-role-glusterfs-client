@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/pypi/pyversions/testinfra.svg?style=flat)
 ![Licence](https://img.shields.io/github/license/kube-cloud/ansible-role-glusterfs-client.svg?style=flat)
 [![Travis Build](https://img.shields.io/travis/kube-cloud/ansible-role-glusterfs-client.svg?style=flat)](https://travis-ci.com/kube-cloud/ansible-role-glusterfs-client)
-[![Galaxy Role Downloads](https://img.shields.io/ansible/role/d/45449.svg?style=flat)](https://galaxy.ansible.com/jetune/glusterfs-client)
+[![Galaxy Role Downloads](https://img.shields.io/ansible/role/d/45933.svg?style=flat)](https://galaxy.ansible.com/jetune/glusterfs_client)
 
 Ansible role used to install glusterfs-client on Linux based Operating System.
 
@@ -23,7 +23,7 @@ Ansible role used to install glusterfs-client on Linux based Operating System.
 
 # Usage
 
-* Install Role ``` ansible-galaxy install jetune.glusterfs-client ```
+* Install Role ``` ansible-galaxy install jetune.glusterfs_client ```
 * use in your playbook
 ```
 ---
@@ -31,5 +31,5 @@ Ansible role used to install glusterfs-client on Linux based Operating System.
 
   roles:
    
-   - role: jetune.glusterfs-client
+   - role: jetune.glusterfs_client
 ```
