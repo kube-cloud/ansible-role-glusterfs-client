@@ -1,14 +1,19 @@
-# Ansible Linux based Server Initialization Role
+# Ansible Linux based glusterfs-client role
 
 ![Python](https://img.shields.io/pypi/pyversions/testinfra.svg?style=flat)
-![Licence](https://img.shields.io/github/license/kube-cloud/ansible-role-initserver.svg?style=flat)
-[![Travis Build](https://img.shields.io/travis/kube-cloud/ansible-role-initserver.svg?style=flat)](https://travis-ci.com/kube-cloud/ansible-role-initserver)
-[![Galaxy Role Downloads](https://img.shields.io/ansible/role/d/45599.svg?style=flat)](https://galaxy.ansible.com/jetune/initserver)
+![Licence](https://img.shields.io/github/license/kube-cloud/ansible-role-glusterfs-client.svg?style=flat)
+[![Travis Build](https://img.shields.io/travis/kube-cloud/ansible-role-glusterfs-client.svg?style=flat)](https://travis-ci.com/kube-cloud/ansible-role-glusterfs-client)
+[![Galaxy Role Downloads](https://img.shields.io/ansible/role/d/45449.svg?style=flat)](https://galaxy.ansible.com/jetune/glusterfs-client)
 
-Ansible role for custom KubeCloud Server Initialization 
+Ansible role used to install glusterfs-client on Linux based Operating System.
 
-<a href="https://www.kube-cloud.com/"><img width="250" src="https://kube-cloud.com/images/branding/logo/kubecloud-logo-single_writing_horizontal_color_300x112px.png" /></a>
-<a href="https://www.redhat.com/fr/technologies/management/ansible"><img width="300" src="https://getvectorlogo.com/wp-content/uploads/2019/01/red-hat-ansible-vector-logo.png" /></a>
+<a href="https://www.kube-cloud.com/"><img width="200" src="https://kube-cloud.com/images/branding/logo/kubecloud-logo-single_writing_horizontal_color_300x112px.png" /></a>
+<a href="https://www.redhat.com/fr/technologies/management/ansible"><img width="150" src="https://getvectorlogo.com/wp-content/uploads/2019/01/red-hat-ansible-vector-logo.png" /></a>
+<a href="https://www.gluster.org/"><img width="150" src="https://www.gluster.org/wp-content/uploads/2016/03/gluster-ant.png" /></a>
+
+# Supported Version
+
+* glusterfs-client 3.12+
 
 # Supported OS
 
@@ -18,7 +23,7 @@ Ansible role for custom KubeCloud Server Initialization
 
 # Usage
 
-* Install Role ``` ansible-galaxy install jetune.initserver ```
+* Install Role ``` ansible-galaxy install jetune.glusterfs-client ```
 * use in your playbook
 ```
 ---
@@ -26,19 +31,5 @@ Ansible role for custom KubeCloud Server Initialization
 
   roles:
    
-   - role: jetune.initserver
-     vars:
-      server_app_code: "kis"
-      server_password_auth: true
-      server_app_description: "KubeCloud Application description"
-      server_app_home: "/kubecloud/myapp/"
-      server_user_name: "admin"
-      server_user_comment: "KIS Application Administrator"
-      server_user_password: "admin123"
-      server_user_groups: ["kis", "sudo", "adm", "exploit"]
-      server_user_create_home: true
-      server_user_shell: "/usr/bin/bash"
-      server_user_ssh_private_key: "security/admin_rsa"
-      server_user_autorized_keys: ["security/admin_rsa.pub"]
-
+   - role: jetune.glusterfs-client
 ```
