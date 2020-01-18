@@ -11,7 +11,7 @@ env:
 
     # Global
     global:
-        - ROLE_NAME: initserver
+        - ROLE_NAME: glusterfs-client
         - AUTHOR: jetune
     matrix:
         - MOLECULE_DISTRO: centos6

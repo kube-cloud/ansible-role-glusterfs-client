@@ -1,10 +1,22 @@
 ---
 
-# Ensure Required Packages are installed
-- name: ({{ ansible_distribution }}) - INSTALL - Ensure Required Packages are installed
-  package:
+# Install packages for Ubuntu
+- name: ({{ ansible_distribution }}) - INSTALL - Install packages for Ubuntu
+  apt:
    name: "{{ item }}"
+   update_cache: true
+   force_apt_get: true
    state: present
-  loop: "{{ server_packages }}"
+  loop: "{{ packages }}"
   when:
-   - item != "firewalld" or ansible_distribution != "CentOS" or ansible_distribution_major_version|int > 6
+   - ansible_distribution == "Ubuntu"
+
+# Install packages for CentOS/RedHat
+- name: ({{ ansible_distribution }}) - INSTALL - Install packages for CentOS/RedHat
+  yum:
+   name: "{{ item }}"
+   update_cache: true
+   state: present
+  loop: "{{ packages }}"
+  when:
+   - ansible_distribution == "RedHat" or ansible_distribution == "CentOS"

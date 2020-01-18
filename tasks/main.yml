@@ -1,6 +1,6 @@
 ---
-# Configure KubeCloud server main tasks on Supported system
-- name: ({{ ansible_distribution }}) - MAIN - KubeCloud server init configuration
+# Configure Glusterfs Client main tasks on Supported system
+- name: ({{ ansible_distribution }}) - MAIN - Glusterfs client main configuration
   block:
 
    # Include Initialize tasks (Linux)
