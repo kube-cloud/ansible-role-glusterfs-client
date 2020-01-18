@@ -11,7 +11,7 @@
 # Set Commons facts for Ubuntu
 - name: ({{ ansible_distribution }}) - INIT - Define commons facts for for Ubuntu installation
   set_fact:
-   packages: "{{ (packages | default([])) + ['fuse', 'libfuse2', 'sshfs', 'fuse-sshfs ', 'fusesmb', \
+   packages: "{{ (packages | default([])) + ['fuse', 'libfuse2', 'sshfs', 'fusesmb', \
    'glusterfs-client'] }}"
   when:
    - ansible_distribution == "Ubuntu"
